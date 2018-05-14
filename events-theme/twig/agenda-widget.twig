@@ -1,0 +1,113 @@
+<style>
+.ai1ec-event-avatar {
+  width: 100%;
+}
+
+.ai1ec-post_thumbnail {
+  width: auto;
+}
+
+.ai1ec-date-events {
+	position: relative;
+	width: 100%;
+}
+
+.ai1ec-date-events .panel-sm-img {
+  height: 275px ;
+}
+
+.ai1ec-date-events .panel-sm-title {
+	font-size: 1rem;
+}
+
+.date-block {
+	position: absolute;
+	text-align: center;
+	width: 80px;
+	background-color: #666;
+  font-weight: bold;
+  font-size: 18pt;
+  color: white;
+}
+
+@media only screen and (min-width: 768px) {
+	.ai1ec-date-events {
+		max-width: 200px;
+	}
+	
+	.ai1ec-date-events .panel-sm-text {
+  	padding-top: 50px;
+  	background-color: white;
+}
+	
+	.date-block {
+		width: 70px;
+		top: 50%;
+		padding: 10px;
+		margin-left: 15px;
+	}
+}
+
+@media only screen and 
+(min-width: 576px) and (max-width: 767px) {
+	.ai1ec-date-events {
+		width: calc(50% - 40px);
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.ai1ec-date-events .panel-sm-text {
+		margin-left: 80px;
+	}
+	
+	.date-block {
+		height: 100%;
+		padding: 15px;
+	}
+}
+
+</style>
+
+<div class="grid-container">
+	{% if dates is empty %}
+		<p class="ai1ec-no-results">
+			{{ text_upcoming_events }}
+		</p>
+	{% else %}
+		{% for date, date_info in dates %}
+			{% for category in date_info.events %}
+				{% for event in category %}
+					<div class="ai1ec-date-events panel-sm meta-news">
+						<div class="ai1ec-event
+							ai1ec-event-id-{{ event.post_id }}
+							ai1ec-event-instance-id-{{ event.instance_id }}
+							{% if event.is_allday %}ai1ec-allday{% endif %}">
+							
+							<a class="ai1ec-load-event" href="{{ event.permalink | e('html_attr') }}">
+								<div class="panel-sm-img d-none d-md-block" 
+									style="background-image: url('https://techhigh-jeff-how.c9users.io/wp-content/uploads/2017/10/teamwork-2499632_640.jpg');">
+              	</div><!-- /.panel-sm-img -->
+							</a>
+							<div class="date-block">{{ date | month }} {{ date | day }}</div>
+							<div class="panel-sm-text">
+								<a class="ai1ec-load-event" href="{{ event.permalink | e('html_attr') }}">
+							  	<h4 class="panel-sm-title"> {{ event.filtered_title | truncate | raw }} </h4>
+							 	</a>
+							  {{ event.short_start_time }}
+							</div><!-- /.panel-sm-text -->
+									
+						</div> <!-- /.ai1ec-event -->
+						</div> <!-- /.col-sm -->
+					{% endfor %}
+			  {% endfor %}
+			{% endfor %} <!-- date, date_info in dates -->
+	{% endif %} <!-- dates is not empty -->
+
+</div><!-- /.row -->
+
+<!--
+
+
+
+-->
+
