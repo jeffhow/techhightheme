@@ -1,0 +1,635 @@
+/*
+  Theme Name: Techhigh Theme
+  Theme URI: https://github.com/jeffhow/techhightheme/
+  Author: Anthony Le & Jeffery Neal
+  Description: Website theme for techhigh.us
+  Version: 2.0
+  License: GNU General Public License v2 or later
+  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+  Text Domain: techhigh
+  Tags: Super Cool, Mega Awesome, Synonym for Awesome, Probably Build by Gods
+  
+  This theme, like WordPress, is licensed under the GPL.
+  Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 Website Fonts
+2.0 General Website Formatting
+--------------------------------------------------------------*/
+
+
+/* ==========================================================================
+  1.0 WEBSITE FONTS
+========================================================================== */
+
+h1, h2{
+  font-family: serif;
+}
+
+.fonts-loaded h1, .fonts-loaded h2{
+  font-family: 'Old Standard TT', serif;
+}
+
+h3, h4, h5, h6, p, .date-block{
+  font-family: sans-serif;
+}
+
+h4, h5 {
+  font-weight: bold;
+}
+
+.fonts-loaded h3, .fonts-loaded h4,
+.fonts-loaded h5, .fonts-loaded h6,
+.fonts-loaded  p, .fonts-loaded .date-block{
+  font-family: 'Open Sans', sans-serif;
+}
+
+small {
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+  2.0 General Formatting
+========================================================================== */
+
+form {
+  display: flex;
+  justify-content: center;
+}
+
+article{
+  /*padding-top:25px;*/
+  padding-bottom:25px;
+}
+
+.site-main header {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.site-main header h1 {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.btn-cta {
+  background-color: #0070BB;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 40px;
+  /*padding-top: 15px;*/
+  /*padding-bottom: 15px;*/
+  /*padding-left: 100px;*/
+  /*padding-right: 100px;*/
+}
+
+.btn:hover {
+  background-color: #00375D;
+}
+
+
+hr {
+  background-color: grey;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+@media only screen and (min-width: 1500px) {
+  .panel[data-width=span] {
+    padding-left: calc(50% - 735px);
+    padding-right: calc(50% - 735px);
+  }
+}
+
+
+/* ==========================================================================
+  MAIN / FRONT PAGE
+========================================================================== */
+
+/* ==========================================================================
+  TECHNICAL AREAS ~ WPI/TESTING
+========================================================================== */
+
+.panel[data-type=hero-image] figure {
+  width: 100%;
+  position: relative;
+}
+
+.panel[data-type=hero-image] figure img {
+  width: 100%;
+}
+
+.panel[data-type=hero-image] figure figcaption {
+  width: 100%;
+}
+
+.panel[data-type=academies] ul {
+  padding: 0;
+}
+
+.panel[data-type=academies] li {
+  list-style: none;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.grid-container {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.panel[data-type=academies] img {
+  width: auto;
+  max-width: 100%;
+}
+
+@media only screen and (min-width: 1024px) {
+  .panel[data-type=academies] li {
+    text-align: left;
+  }
+
+  .panel[data-type=hero-image] figure figcaption {
+    padding-right: calc(50% + 125.5px);
+  }
+}
+
+@media only screen and
+(min-width: 768px) and (max-width: 1023px) {
+  .panel[data-type=hero-image] figure figcaption {
+    padding-right: calc(50% - 174.5px);
+  }
+}
+
+/* Will be applied to Medium Devices & Up (Tablets, Desktops) */
+@media only screen and (min-width: 767px) {
+  .panel[data-type=hero-image] figure figcaption {
+    position: absolute;
+    top: 0px;
+    padding-top: 22.5px;
+    padding-bottom: 22.5px;
+    color: #fff;
+    z-index: 1;
+  }
+
+  .panel[data-type=hero-image] figure figcaption:before {
+    display: block;
+    background: linear-gradient(0deg,transparent 0,#000 75%);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 125%;
+    opacity: .85;
+    z-index: -1;
+  }
+
+  .meta-news:first-child {
+    margin-left: 30px;
+  }
+
+  .meta-news:last-child {
+    margin-right: 30px;
+  }
+
+}
+
+/* ==========================================================================
+ ARCHIVE PAGES
+========================================================================== */
+
+.panel[data-type=resources] section {
+  width: 400px;
+  padding: 20px 0px;
+  margin: 10px;
+  color: white;
+  background-color: #0070BB;
+}
+
+.panel[data-type=resources] a {
+  border-top: 3px solid white;
+  color: inherit;
+  text-decoration: underline;
+}
+
+.panel[data-type=resources] i {
+  font-size: 30px;
+}
+
+.panel[data-type=resources] h3 {
+  margin-bottom: 15px;
+  font-size: 25px;
+}
+
+/* ==========================================================================
+  NAVBAR / NAVIGATION MENU
+========================================================================== */
+
+.primary-nav, .primary-nav li a {
+  background-color: #0070BB;
+  padding: 0;
+}
+
+.primary-nav ul,
+.primary-nav h1,
+.secondary-nav ul {
+  height: 60px;
+}
+.primary-nav h1{
+  margin:0;
+}
+.primary-nav li {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.primary-nav li a {
+  color: white;
+  height: 100%;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  font-size: 1.15em;
+  transition: color .2s ease-out, background .2s ease-in;
+}
+
+.primary-nav li a:hover{
+  background-color: #00375D;
+}
+
+h1 .navbar-brand {
+  padding-left: 8px;
+  padding-right: 8px;
+  color: white;
+  font-size: .55em;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.navbar-brand:hover{
+  background-color: none;
+}
+
+.secondary-nav {
+  background-color: white;
+  box-shadow:0 0 15px rgba(0,0,0,.4);
+  padding:0;
+}
+
+.secondary-nav li a {
+  position: relative;
+  color: black;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  font-size: 1.4em;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.secondary-nav a:hover{
+  color:#0070BB;
+}
+
+.secondary-nav a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #0070BB;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.2s ease-in-out 0s;
+}
+
+.secondary-nav a:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.navbar-toggler {
+  font-size: 1em;
+  color: white;
+}
+
+.menu-btn {
+  margin-left: auto;
+}
+
+/** Two col mobile navbar dropdown **/
+@media (max-width: 767px){
+  .navbar-nav>li {
+      float: left;
+      width: 50%;
+  }
+  .navbar-nav{
+    display: initial;
+  }
+  .nav-search-li{
+    display: none;
+  }
+}
+
+
+
+/* ==========================================================================
+  ALL NEWS
+========================================================================== */
+
+.meta-news, .ai1ec-date-events {
+  margin-left: 15px;
+  margin-right: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,.3), 0 3px 3px rgba(0,0,0,.15);
+}
+
+/* ==========================================================================
+  FEATURED NEWS
+========================================================================== */
+
+.featured-news {
+  /*width: calc(100% - 60px);*/
+  /*height: 550px;*/
+  margin-bottom: 30px;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  padding-top: 300px;
+  padding-bottom: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+  box-shadow: 0 0 .01px rgba(0,0,0,.3), 0 3px 3px rgba(0,0,0,.15);
+}
+
+.featured-news-excerpt {
+  /*left: 30px;*/
+  /*bottom: 30px;*/
+  /*position: absolute;*/
+  display: block;
+  /*width: calc(35% - 45px);*/
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 20px;
+  text-align: left;
+  color:black;
+  background-color: rgba(255,255,255,0.5);
+  box-shadow: 0 0 10px rgba(0,0,0,.15), 0 3px 3px rgba(0,0,0,.15);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.15), 0 3px 3px rgba(0,0,0,.15);
+  transition: all .2s ease-in-out;
+}
+.featured-news-excerpt:hover{
+  background-color: rgba(255,255,255,0.9);
+}
+
+/* ==========================================================================
+  NON-FEATURED NEWS
+========================================================================== */
+
+.meta-news {
+  background-color:#fff;
+  margin-bottom: 60px;
+  padding: 0;
+  transition: all .2s ease-in-out, color .2s ease-out;
+}
+
+.meta-news:hover {
+  transform: scale(1.05);
+}
+.meta-news:hover .panel-sm-text {
+  color: #0070BB;
+}
+
+.meta-news:hover .btn{
+  background-color:#00375D;
+}
+
+.panel-sm-img {
+  width: 100%;
+  height: 175px;
+  background-position: center;
+  background-size: cover;
+}
+
+.panel-sm-text {
+  text-align: left;
+  padding: 20px;
+}
+
+.panel-sm-text a {
+  color: black;
+  text-decoration: none;
+}
+
+.about-panel {
+  background-image: url(' https://techhigh-jeff-how.c9users.io/wp-content/uploads/2017/10/Untitled-1.png ');
+  background-size: cover;
+  background-position: 50% 50%;
+  max-width: none;
+  max-height: none;
+  padding: 30px;
+}
+
+.panel[data-type=facts-info] h3 {
+  font-weight: 800;
+  font-size: 3.5em;
+}
+
+.tagline {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.55);
+  width: 100%;
+  z-index: 50;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  display: inline-block;
+}
+
+.splash-page {
+  background-image: url('https://techhigh-jeff-how.c9users.io/wp-content/uploads/2018/01/Worcester-Technical-High-School.jpg');
+  background-size: cover;
+  /** The 80% should keep the main enterance of the school in frame on mobile **/
+  background-position: 80% 50%;
+  width: 100%;
+  /** This is overridden by JS adjustSplash() **/
+  height: 100vh;
+}
+
+.splash-page h1 {
+  color: white;
+  font-size: 25px; /** fallback size**/
+  font-size: 11vw;
+  text-shadow: 0 0 30px rgba(0,0,0,.7);
+  position: absolute;
+  top: 45%;
+  left: 0;
+  right: 0;
+}
+
+.explore-link{
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 10px black;
+  font-size: 2em;
+  z-index: 50;
+  display: inline-block;
+}
+
+.explore-link:after {
+  color: white;
+  font-family: FontAwesome;
+  font-size: inherit;
+  content: "\f078";
+  display: block;
+}
+
+.explore-link:hover {
+  color:white;
+  text-decoration: none;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+#explore-modal {
+  position: absolute;
+  top: 85%;
+  width: 100%;
+  text-align: center;
+}
+
+/* ==========================================================================
+  Front page Big Panels
+========================================================================== */
+.technical-areas, .upcoming-events {
+ background-color:#ccc;
+}
+
+/* ==========================================================================
+  Footers
+========================================================================== */
+.copyright{
+  margin-top: 15px;
+  background-color: #0070BB;
+  color:white;
+  padding-top: 15px;
+  padding-bottom:15px;
+}
+.copyright p{
+  margin: 0;
+}
+
+.equal-opportunity{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #dee2e6;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .btn-cta {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+/* ==========================================================================
+  MOBILE
+========================================================================== */
+
+/* Small devices (Phones, 576px maximum) */
+@media only screen and (max-width: 576px) {
+
+  h4 {
+    font-size: 20px;
+  }
+  .site-main header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .site-main header h1 {
+    font-size: 45px;
+  }
+
+  .site-main header h3 {
+    font-size: 20px;
+  }
+
+  .meta-news {
+    /* min-width: 340px; */
+    margin-bottom: 30px;
+  }
+
+  .splash-page h1 { font-size: 4.5em; }
+
+  .featured-news {
+    padding-top: 50px !important;
+  }
+
+  .explore-link { font-size: 1.5em; }
+
+  .btn-cta {
+    margin-bottom: 20px;
+  }
+  .panel.img[data-type=academies]{
+    width: 10%;
+    height: 10%;
+  }
+}
+
+
+/* SEARCH */
+
+.search-container {
+    width: 100%;
+    padding-left:50px;
+    padding-right:50px;
+    padding-bottom:50px;
+    padding-top:50px;
+    margin:auto;
+}
+.search-page-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 300 !important;
+    letter-spacing: 2px;
+    line-height: 50px;
+    text-align:center;
+    display:block;
+    text-transform:uppercase;
+    padding-top:50px;
+    padding-bottom:25px;
+}
+.search-post-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+    font-weight: 600 !important;
+    letter-spacing: 2px;
+    line-height: 50px;
+    text-align:left;
+    display:block;
+}
+.search-post-excerpt {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400 !important;
+    letter-spacing: 1px;
+    line-height: 15px;
+    text-align:left;
+    display:block;
+}
+
+@media only screen and (max-width: 768px) {
+        .search-container {
+        width: 100%;
+        padding-left:15px;
+        padding-right:15px;
+    }
+}
