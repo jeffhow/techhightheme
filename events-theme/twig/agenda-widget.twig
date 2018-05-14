@@ -68,7 +68,7 @@
 
 </style>
 
-<div class="grid-container">
+<div class="row">
 	{% if dates is empty %}
 		<p class="ai1ec-no-results">
 			{{ text_upcoming_events }}
@@ -77,7 +77,7 @@
 		{% for date, date_info in dates %}
 			{% for category in date_info.events %}
 				{% for event in category %}
-					<div class="ai1ec-date-events panel-sm meta-news">
+					<div class="col-md-3 ai1ec-date-events panel-sm meta-news">
 						<div class="ai1ec-event
 							ai1ec-event-id-{{ event.post_id }}
 							ai1ec-event-instance-id-{{ event.instance_id }}
@@ -85,7 +85,7 @@
 							
 							<a class="ai1ec-load-event" href="{{ event.permalink | e('html_attr') }}">
 								<div class="panel-sm-img d-none d-md-block" 
-									style="background-image: url('https://techhigh-jeff-how.c9users.io/wp-content/uploads/2017/10/teamwork-2499632_640.jpg');">
+									style="background-image: url('/wp-content/plugins/all-in-one-event-calendar/public/themes-ai1ec/techhighcustom/img/gears/gear-{{ random(7) }}.jpg');">
               	</div><!-- /.panel-sm-img -->
 							</a>
 							<div class="date-block">{{ date | month }} {{ date | day }}</div>
