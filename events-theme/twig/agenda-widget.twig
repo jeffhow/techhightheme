@@ -1,71 +1,58 @@
 <style>
-.ai1ec-event-avatar {
-  width: 100%;
+.event-card-img{
+  height: 200px ;
 }
 
-.ai1ec-post_thumbnail {
-  width: auto;
+.event-card-text{
+	text-align: left;
+	padding: 10px 10px 10px 10px;
+	height:80px;
 }
 
-.ai1ec-date-events {
-	position: relative;
-	width: 100%;
+@media (min-width: 576px){
+/* will be applied for small and larger */
+	.event-card-text{
+		/* @Note: these override values in the class above */
+		height:150px; 
+		padding-top:40px;
+	}
 }
 
-.ai1ec-date-events .panel-sm-img {
-  height: 275px ;
-}
-
-.ai1ec-date-events .panel-sm-title {
+.event-card-text h4{
 	font-size: 1rem;
 }
+.event-card-text{
+	color: black;
+}
+.front-card:hover .event-card-text{
+  color: #00375D;
+}
 
-.date-block {
-	position: absolute;
+@media (min-width: 576px){
+/* will be applied for small and larger */
+	.event-date-block {
+		margin-left:15px;
+		position: absolute;
+		top: 40%;
+	}
+}
+
+.event-date-block {
 	text-align: center;
-	width: 80px;
+	width: 70px;
+	height: 80px;
 	background-color: #666;
-  font-weight: bold;
+	font-weight: bold;
   font-size: 18pt;
   color: white;
+  /* This makes short dates 2-line */
+	padding:0 10px 0 10px;
 }
 
-@media only screen and (min-width: 768px) {
-	.ai1ec-date-events {
-		max-width: 200px;
-	}
-	
-	.ai1ec-date-events .panel-sm-text {
-  	padding-top: 50px;
-  	background-color: white;
+.event-date-block{
+	float:left;
+	margin-right:20px;
 }
-	
-	.date-block {
-		width: 70px;
-		top: 50%;
-		padding: 10px;
-		margin-left: 15px;
-	}
-}
-
-@media only screen and 
-(min-width: 576px) and (max-width: 767px) {
-	.ai1ec-date-events {
-		width: calc(50% - 40px);
-	}
-}
-
-@media only screen and (max-width: 767px) {
-	.ai1ec-date-events .panel-sm-text {
-		margin-left: 80px;
-	}
-	
-	.date-block {
-		height: 100%;
-		padding: 15px;
-	}
-}
-
 </style>
 
 <div class="row">
@@ -77,37 +64,36 @@
 		{% for date, date_info in dates %}
 			{% for category in date_info.events %}
 				{% for event in category %}
-					<div class="col-md-3 ai1ec-date-events panel-sm meta-news">
-						<div class="ai1ec-event
-							ai1ec-event-id-{{ event.post_id }}
-							ai1ec-event-instance-id-{{ event.instance_id }}
-							{% if event.is_allday %}ai1ec-allday{% endif %}">
+				
+					<div class="col-lg-2 col-sm-4
+						          ai1ec-event
+							        ai1ec-event-id-{{ event.post_id }}
+							        ai1ec-event-instance-id-{{ event.instance_id }}
+							        {% if event.is_allday %}ai1ec-allday{% endif %}">
 							
-							<a class="ai1ec-load-event" href="{{ event.permalink | e('html_attr') }}">
-								<div class="panel-sm-img d-none d-md-block" 
-									style="background-image: url('/wp-content/plugins/all-in-one-event-calendar/public/themes-ai1ec/techhighcustom/img/gears/gear-{{ random(7) }}.jpg');">
-              	</div><!-- /.panel-sm-img -->
-							</a>
-							<div class="date-block">{{ date | month }} {{ date | day }}</div>
-							<div class="panel-sm-text">
-								<a class="ai1ec-load-event" href="{{ event.permalink | e('html_attr') }}">
-							  	<h4 class="panel-sm-title"> {{ event.filtered_title | truncate | raw }} </h4>
-							 	</a>
+						<a class="front-card event-card ai1ec-load-event" href="{{ event.permalink | e('html_attr') }}">
+							<div class="event-card-img d-none d-sm-block" 
+									 style="background-image: url('/wp-content/plugins/all-in-one-event-calendar/public/themes-ai1ec/techhigh/img/gears/gear-{{ random(7) }}.jpg');">
+              </div><!-- /.event-card-img -->
+              
+							<div class="event-date-block">
+								<div>
+									{{ date | month }} {{ date | day }}
+								</div>
+							</div>
+							
+							<div class="event-card-text">
+							  <h4>{{ event.filtered_title | truncate | raw }}</h4>
 							  {{ event.short_start_time }}
-							</div><!-- /.panel-sm-text -->
-									
-						</div> <!-- /.ai1ec-event -->
-						</div> <!-- /.col-sm -->
+							</div><!-- /.event-card-text -->
+							
+						</a>
+						
+					</div> <!-- /.col -->
+					
 					{% endfor %}
 			  {% endfor %}
 			{% endfor %} <!-- date, date_info in dates -->
 	{% endif %} <!-- dates is not empty -->
 
 </div><!-- /.row -->
-
-<!--
-
-
-
--->
-
