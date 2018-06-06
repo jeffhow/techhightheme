@@ -9,46 +9,45 @@
  * @since 1.0
  * @version 2.0
  */
- 
 get_header(); ?>
+<section id="news-section" class="container-fluid">
+  <header class="section-header">
+    <h1>Latest News</h1>
+    <h3>The Latest News from Worcester Tech</h3>
+  </header>
+      
+  <!-- News -->
+  <?php if ( have_posts() ) : ?>
+    <div class="row">
+      <?php while ( have_posts() ) : the_post(); ?>
+      	<div class="col-md-3 col-sm-6">
+          <a href="<?php the_permalink(); ?>" class="front-card">
+            <div class="d-none d-sm-block front-card-img" 
+              style="background-image: url('<?php echo get_the_post_thumbnail_url( $post->ID, 'full' ); ?>');">
+            </div>
+            <div class="front-card-text"
+                 style="background-image: url('<?php echo get_the_post_thumbnail_url( $post->ID, 'full' ); ?>');">
+              <div>
+                <h4><?php the_title(); ?></h4>
+                <?php echo get_the_date(); ?>
+              </div>
+            </div>
+          </a>
+        </div><!-- /.col -->
+      <?php endwhile; ?>
+      </div><!-- /.row -->
+      
+      <?php 
+    		// Pagination
+      	get_template_part( 'template-parts/components/component', 'pagination' );
+      ?>
+      
+    <?php else: ?>
+      <?php
+    		get_template_part( 'template-parts/content/content', 'none' );
+    	?>
+    <?php endif; ?>
 
-	<header>
-		<h1> Tech News </h2>
-	  <h4> The latest news from Worcester Tech </h4>
-	</header>
-	
-	<section class="container-fluid" data-type="posts">
-		<div class="row">
-			<?php
-			if ( have_posts() ) :
-				$post_count = 0;
-				while ( have_posts() ) : the_post();  $post_count++;
-					if($post_count == 5): $post_count = 0; ?>
-						</div>
-						<div class="row">
-					<?php endif; ?>
-					
-					<div class="col-sm panel-sm meta-news">
-						<a href="<?php the_permalink(); ?>">
-							<div class="panel-sm-img d-none d-sm-block" 
-									 style="background-image: url('<?php echo get_the_post_thumbnail_url( $post->ID, 'full' ); ?>');">
-							</div>
-						</a>
-						<div class="panel-sm-text">
-							<h5><?php the_title(); ?></h5>
-							<?php echo get_the_date(); ?>
-						</div>
-					</div>
-					
-				<?php endwhile; ?>
-				
-			<?php else : ?>
-				<div class="col">
-						<?php get_template_part( 'template-parts/content', 'none' ); ?>
-				</div>
-				
-			<?php endif; ?>
-		</div>
-	</section>
+</section>
 
 <?php get_footer(); ?>

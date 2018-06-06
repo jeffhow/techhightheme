@@ -3,21 +3,24 @@
  * Academics Page for Techhigh Theme
  * 
  * 
- * 
+ * @version 2.0
  */
  get_header();
 ?>
 
-<section class="container-fluid">
-    <header>
-      <h1> Academics </h1>
-      <h3> Education for equity in both the classroom and the work place</h3>
-    </header>
-    <?php $academics = get_page_by_path('academics'); ?>
-    <h1><?php echo $page->post_title; ?></h1>
-    <?php echo $page-> post_content; wp_reset_postdata(); ?>
+<article class="container-fluid">
+  <header>
+    <h1>Academics</h1>
+    <h3>Education for equity in both the classroom and the work place</h3>
+    <div page-content>
+      <?php // Print the page content
+        if ( have_posts() ){ while( have_posts() ){ the_post(); the_content(); } } 
+      ?>
+    </div>
+  </header>
+  
   <div class="row">
-  <?php 
+  <?php // get all the academic pages
     $academics = array( get_page_by_path('ela'), 
                         get_page_by_path('math'),
                         get_page_by_path('science'),
@@ -26,27 +29,39 @@
                         get_page_by_path('mcas'),
                         get_page_by_path('physed'),
                         get_page_by_path('sped') );
-    $i = 0;      
+    $i = 0; 
+    // four pages per row
     foreach($academics as $page): $i++;
       if($i==5): ?>
         </div><!--/.row-->
         <div class="row">
       <?php endif; ?>  
         
-      <div class="col-sm panel-sm meta-news">
-        <a href="<?php echo get_page_link( $page->ID ); ?>">
-          <div class="panel-sm-img d-sm-block d-none" style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
+      <div class="col-md-3 col-sm-6">
+        <a href="<?php echo get_page_link( $page->ID ); ?>"
+           class="front-card">
+          <div class="d-none d-sm-block front-card-img" 
+               style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
+          </div>
+          <div class="front-card-text"
+               style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
+            <div><h3><?php echo $page->post_title; ?></h3></div>
+            <?php 
+              if( strlen($page->post_title) > 20 ){
+                echo '<div class="gym-fix"></div>';
+              }
+            ?>
+          </div>
+          <div class="btn btn-primary btn-sm front-card-btn">
+              Learn More &hellip;
           </div>
         </a>
-        <div class="panel-sm-text">
-          <h3 class="panel-sm-title"><?php echo $page->post_title; ?></h3>
-          <a href="<?php echo get_page_link( $page->ID ); ?>" class="btn btn-secondary btn-sm">
-            Learn More
-          </a>
-        </div>
-      </div>
+      </div><!-- /.col -->
     <?php endforeach; wp_reset_postdata(); ?>
-  </section>
+    </div><!--/.row-->
+    
+</article>
+
 <?php 
 get_footer();
 ?>

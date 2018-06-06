@@ -12,80 +12,94 @@
  
 get_header(); ?>
 
-<section class="container-fluid">
+<article class="container-fluid">
+  <header>
+    <h1>Technical Areas</h1>
+    <h3>Four academies to train and explore your passions</h3>
+  </header>
   
-  <section class="panel" data-type="content-head">
-    <header>
-      <h1> Technical Areas </h1>
-      <h3> Four academies to train and explore your passions </h3>
-    </header>
-  </section>
-  
-  <section class="panel" data-type="hero-image" data-width="span">
+  <?php // Print the page content
+          if ( have_posts() ):
+            while( have_posts() ):
+              the_post(); ?>
+              
+  <?php if( has_post_thumbnail() ): ?>
     <figure>
-      <img src="https://techhigh-jeff-how.c9users.io/wp-content/uploads/2018/03/03182016-WorcesterTechnicalSchool_05-1020x564-e1525184722305.jpg">
+      <?php the_post_thumbnail('full', 'class=img-fluid'); ?>
       <figcaption>
-        <p> Here is some placeholder text that is yet to mature to greatness!</p>
+        <div class="row"><div class="col text-left">
+          <small class="text-muted"><?php echo get_post(get_post_thumbnail_id())->post_excerpt; ?></small>
+        </div></div>
       </figcaption>
-      
     </figure>
-  </section>
-
-  <section class="panel" data-type="facts-info" data-width="span">
+  <?php endif; ?>
+  
+  <aside>
     <hr>
       <div class="row">
         <div class="col-sm">
-          <h3> 4 </h3>
-          <h5> Academies</h5>
+          <h3>4</h3>
+          <h5>Academies</h5>
         </div>
         
          <div class="col-sm">
-          <h3> 22 </h3>
-          <h5> Technical Areas</h5>
+          <h3>22</h3>
+          <h5>Technical Areas</h5>
         </div>
         
          <div class="col-sm">
-          <h3> 11:1 </h3>
-          <h5> Student-Faculty Ratio</h5>
+          <h3>11:1</h3>
+          <h5>Student-Faculty Ratio</h5>
         </div>
       </div>
     <hr>
-  </section>
+  </aside>
   
-  <section class="panel" data-type="academies" data-width="span">
+  <section class="acadamies-section">
     <header>
-      <h3> Academies </h3>
-    </header>
-    <?php 
-      $parent = get_category_by_slug( 'Academies' );
-      $academies = get_categories( 
-        array( 'parent' => $parent-> term_id, ) );
+      <h2>Our Academies</h2>
+      <div page-content>
         
-      foreach ( $academies as $academy ) : 
-        $catQuery = new WP_Query( 
-          array( 'cat' =>  $academy -> term_id ) );
-          
-        if ( $catQuery -> have_posts() ) : ?>
-        <div class="row">
-          <div class="col-md-6">
-           
-            <img src="https://techhigh-jeff-how.c9users.io/wp-content/uploads/2017/09/048803fd0b84da6203ae6c084e2f7ae3-kitty-tattoos-sanrio-hello-kitty.jpg">
-            
-          </div>
-          <div class="col-md-6">
-            <h3> <?php echo $academy -> name ?></h3>
-            <p> <?php echo category_description( $academy -> term_id ); ?> </p>
-            <?php while ( $catQuery -> have_posts() ) : $catQuery -> the_post(); ?>
-              <li>
-                <a href="<?php the_permalink(); ?>"> <?php the_title(); ?> > </a>
-              </li>
-            <?php endwhile; ?>
-          </div>
-        </div>
-        <hr>
-        <?php endif; wp_reset_postdata(); ?>
-      <?php endforeach; ?>
-  </section>
-</section>
+        <?php the_content(); ?>
+        
+        <?php
+            endwhile; 
+          endif; 
+        ?>
+      </div>
+    </header>
+    
+    <div class="row">
+      <?php 
+        $techareas = array( get_page_by_path('alden'), 
+                            get_page_by_path('health'),
+                            get_page_by_path('construction'),
+                            get_page_by_path('it') );
+        foreach($techareas as $page): $i++; ?>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="front-card">
+              <div class="d-none d-sm-block front-card-img" 
+                   style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
+              </div>
+              <div class="front-card-text shop-card-text"
+                   style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
+                <div>
+                  <h4>
+                    <a href="<?php the_permalink($page->ID); ?>">
+                      <?php echo $page->post_title; ?>
+                    </a>
+                  </h4>
+                  <div class="shop-links">
+                    <?php echo get_post_meta($page->ID, 'shops', true); ?>
+                  </div>
+                </div>
+              </div>
+              <a class="btn btn-primary btn-sm front-card-btn" href="<?php the_permalink($page->ID); ?>">
+                Learn More &hellip;
+              </a>
+            </div><!-- /.front-card -->
+          </div><!-- /.col -->
+        <?php endforeach; wp_reset_postdata(); ?>
+    </div><!-- /.row -->
 
 <?php get_footer(); ?>

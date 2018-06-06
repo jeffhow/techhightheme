@@ -10,48 +10,30 @@
  * @version 2.0
  */
 get_header() ?>
-<div class="search-container">
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<?php
+  if ( have_posts() ) : ?>
+    <header>
+    	<h1>Search</h1>
+    	<h3>Search results for <?php get_search_query(); ?></h3>
+    </header><!-- .page-header -->
+    
+	<?php
+  	// Start the Loop.
+  	while ( have_posts() ) : the_post();
+	
+	    get_template_part( 'template-parts/content/content', 'search' );
+	
+    endwhile;
+    
+    // Pagination
+    get_template_part( 'template-parts/components/component', 'pagination' );
+    
+  else: // If no content, include the "No posts found" template.
+  	
+  	get_template_part( 'template-parts/content/content', 'none' );
 
-		<?php if ( have_posts() ) : ?>
+  endif;
+?>
 
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyfifteen' ), get_search_query() ); ?></h1>
-			</header><!-- .page-header -->
-
-			<div class= "col">
-			<?php
-			// Start the loop.
-			while ( have_posts() ) : the_post(); ?>
-            <span class="search-post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></span>
-            <span class="search-post-excerpt"><?php the_excerpt(); ?></span>
-            <hr>
-            <?php endwhile; ?>
-      </div>
-
-				<?php
-
-
-			// Previous/next page navigation.
-		  the_posts_pagination( array(
-			'prev_text'          => __( 'Previous page', 'twentyfifteen' ),
-				'next_text'          => __( 'Next page', 'twentyfifteen' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>',
-			) );
-
-
-		// If no content, include the "No posts found" template.
-		else : 
-		
-			get_template_part( 'content', 'none' );
-
-		endif;
-		?> 
-
-
-		</main><!-- .site-main -->
-	</section><!-- .content-area -->
-</div> <!-- .search-container -->
 <?php get_footer(); ?>

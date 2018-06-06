@@ -11,22 +11,14 @@
  */
  
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php	get_template_part( 'template-parts/components/content', 'heading' ); ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class('container-fluid'); ?>>
+	
+	<?php	get_template_part( 'template-parts/components/component', 'heading' ); ?>
 
-	<div class="entry-content container text-left">
+	<div class="entry-content text-left">
 		<?php	the_content(); ?>
 	</div><!-- .entry-content -->
-
-	<footer class="entry-footer container text-right">
-		<?php // edit_post_link( $link, $before, $after, $id, $class );
-			edit_post_link(
-				_( 'Edit This Content' ) ,
-				'<div class="edit-link">',
-				'</div>',
-				null,
-				'btn btn-sm btn-outline-primary'
-			);
-		?>
-	</footer><!-- .entry-footer -->
+	
+	<?php	get_template_part( 'template-parts/components/component', 'footer' ); ?>
+	
 </article><!-- #post-## -->

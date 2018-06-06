@@ -1,7 +1,7 @@
 /*
-  Theme Name: Techhigh Theme
-  Theme URI: https://github.com/jeffhow/techhightheme/
-  Author: Anthony Le & Jeffery Neal
+  Theme Name: Tech High Custom
+  Theme URI: https://techhigh.us/
+  Author: Anthony Le, Jeffery Neal, and Mariah Donahue
   Description: Website theme for techhigh.us
   Version: 2.0
   License: GNU General Public License v2 or later
@@ -16,10 +16,23 @@
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
+0.0 Setup Instructions
 1.0 Website Fonts
 2.0 General Website Formatting
+3.0 Navigation
+4.0 Footer
+5.0 Front-Page
+6.0 Search
 --------------------------------------------------------------*/
 
+/* ==========================================================================
+  0.0 Setup Instructions
+  
+  0.1 Reading Settings set to display summary
+  0.2 Create page for signage (slug-template)
+  0.3 Set blog to news
+
+========================================================================== */
 
 /* ==========================================================================
   1.0 WEBSITE FONTS
@@ -47,27 +60,34 @@ h4, h5 {
   font-family: 'Open Sans', sans-serif;
 }
 
-small {
-  font-size: 0.95rem;
+figcaption{
+  margin:auto;
+  max-width: 1019px;
+}
+
+figcaption div{
+  line-height: 1;
 }
 
 /* ==========================================================================
   2.0 General Formatting
 ========================================================================== */
-
-form {
-  display: flex;
-  justify-content: center;
+/* fix wpadminbar when logged in */
+#wpadminbar{
+  position: fixed;
 }
 
+/* Fix the modal padding that shifts centered content */
+.modal-open{ padding:0 !important; overflow-y: auto; }
+.techhigh-header{ padding:0 !important; }
+
 article{
-  /*padding-top:25px;*/
-  padding-bottom:25px;
+  padding-bottom: 25px;
 }
 
 .site-main header {
   padding-top: 40px;
-  padding-bottom: 40px;
+  padding-bottom: 40px; 
   text-align: center;
 }
 
@@ -75,22 +95,26 @@ article{
   font-size: 4rem;
   font-weight: bold;
 }
-
-.btn-cta {
+.site-main header h2{
+  font-size: 3rem;
+  font-weight: bold;
+}
+.btn-cta{
   background-color: #0070BB;
   font-size: 1.5em;
   font-weight: 600;
   margin-bottom: 40px;
-  /*padding-top: 15px;*/
-  /*padding-bottom: 15px;*/
-  /*padding-left: 100px;*/
-  /*padding-right: 100px;*/
+  border:none;
+}
+
+.btn-primary{
+  border:none;
+  background-color: #0070BB;
 }
 
 .btn:hover {
   background-color: #00375D;
 }
-
 
 hr {
   background-color: grey;
@@ -98,137 +122,37 @@ hr {
   margin-bottom: 30px;
 }
 
-@media only screen and (min-width: 1500px) {
-  .panel[data-width=span] {
-    padding-left: calc(50% - 735px);
-    padding-right: calc(50% - 735px);
-  }
+.embed-search{
+  /* for the searchbar on content-none.php*/
+  margin:auto;
+  max-width:500px;
+}
+.entry-footer{
+  padding-top:20px;
+  border-top: #ddd solid 2px;
 }
 
-
-/* ==========================================================================
-  MAIN / FRONT PAGE
-========================================================================== */
-
-/* ==========================================================================
-  TECHNICAL AREAS ~ WPI/TESTING
-========================================================================== */
-
-.panel[data-type=hero-image] figure {
-  width: 100%;
-  position: relative;
+.feed-excerpt .meta-well{
+  border-bottom: 1px #ddd solid;
+  margin-bottom: 10px;
 }
 
-.panel[data-type=hero-image] figure img {
-  width: 100%;
-}
-
-.panel[data-type=hero-image] figure figcaption {
-  width: 100%;
-}
-
-.panel[data-type=academies] ul {
-  padding: 0;
-}
-
-.panel[data-type=academies] li {
-  list-style: none;
-  font-weight: bold;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-.grid-container {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-}
-
-.panel[data-type=academies] img {
-  width: auto;
-  max-width: 100%;
-}
-
-@media only screen and (min-width: 1024px) {
-  .panel[data-type=academies] li {
-    text-align: left;
-  }
-
-  .panel[data-type=hero-image] figure figcaption {
-    padding-right: calc(50% + 125.5px);
-  }
-}
-
-@media only screen and
-(min-width: 768px) and (max-width: 1023px) {
-  .panel[data-type=hero-image] figure figcaption {
-    padding-right: calc(50% - 174.5px);
-  }
-}
-
-/* Will be applied to Medium Devices & Up (Tablets, Desktops) */
-@media only screen and (min-width: 767px) {
-  .panel[data-type=hero-image] figure figcaption {
-    position: absolute;
-    top: 0px;
-    padding-top: 22.5px;
-    padding-bottom: 22.5px;
-    color: #fff;
-    z-index: 1;
-  }
-
-  .panel[data-type=hero-image] figure figcaption:before {
-    display: block;
-    background: linear-gradient(0deg,transparent 0,#000 75%);
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 125%;
-    opacity: .85;
-    z-index: -1;
-  }
-
-  .meta-news:first-child {
-    margin-left: 30px;
-  }
-
-  .meta-news:last-child {
-    margin-right: 30px;
-  }
-
+.feed-excerpt .entry-content:after {
+  content:"";
+  position: absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:70%;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
+  background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */ 
 }
 
 /* ==========================================================================
- ARCHIVE PAGES
-========================================================================== */
-
-.panel[data-type=resources] section {
-  width: 400px;
-  padding: 20px 0px;
-  margin: 10px;
-  color: white;
-  background-color: #0070BB;
-}
-
-.panel[data-type=resources] a {
-  border-top: 3px solid white;
-  color: inherit;
-  text-decoration: underline;
-}
-
-.panel[data-type=resources] i {
-  font-size: 30px;
-}
-
-.panel[data-type=resources] h3 {
-  margin-bottom: 15px;
-  font-size: 25px;
-}
-
-/* ==========================================================================
-  NAVBAR / NAVIGATION MENU
+  3.0 NAVIGATION
 ========================================================================== */
 
 .primary-nav, .primary-nav li a {
@@ -241,16 +165,18 @@ hr {
 .secondary-nav ul {
   height: 60px;
 }
-.primary-nav h1{
-  margin:0;
+
+.navbar-brand{
+  padding:17px;
 }
-.primary-nav li {
+
+.primary-nav li, .primary-nav h1 {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-.primary-nav li a {
+.primary-nav li a{
   color: white;
   height: 100%;
   padding-top: 14px;
@@ -259,7 +185,7 @@ hr {
   transition: color .2s ease-out, background .2s ease-in;
 }
 
-.primary-nav li a:hover{
+.primary-nav li a:hover, .primary-nav a:hover{
   background-color: #00375D;
 }
 
@@ -269,10 +195,6 @@ h1 .navbar-brand {
   color: white;
   font-size: .55em;
   transition: all 0.3s ease-in-out 0s;
-}
-
-.navbar-brand:hover{
-  background-color: none;
 }
 
 .secondary-nav {
@@ -295,6 +217,7 @@ h1 .navbar-brand {
   color:#0070BB;
 }
 
+/* These two selectors create the underline effect */
 .secondary-nav a:before {
   content: "";
   position: absolute;
@@ -323,121 +246,145 @@ h1 .navbar-brand {
   margin-left: auto;
 }
 
-/** Two col mobile navbar dropdown **/
-@media (max-width: 767px){
-  .navbar-nav>li {
-      float: left;
-      width: 50%;
-  }
-  .navbar-nav{
-    display: initial;
-  }
-  .nav-search-li{
-    display: none;
-  }
+/* Mobile nav experiement */
+.mobile-primary{
+  background-color: #0070BB;
+  box-shadow: inset 0 0 15px rgba(0,0,0,.4);
 }
 
-
-
-/* ==========================================================================
-  ALL NEWS
-========================================================================== */
-
-.meta-news, .ai1ec-date-events {
-  margin-left: 15px;
-  margin-right: 15px;
-  box-shadow: 0 0 10px rgba(0,0,0,.3), 0 3px 3px rgba(0,0,0,.15);
-}
-
-/* ==========================================================================
-  FEATURED NEWS
-========================================================================== */
-
-.featured-news {
-  /*width: calc(100% - 60px);*/
-  /*height: 550px;*/
-  margin-bottom: 30px;
-  position: relative;
-  background-position: center;
-  background-size: cover;
-  padding-top: 300px;
-  padding-bottom: 25px;
-  padding-left: 25px;
-  padding-right: 25px;
-  box-shadow: 0 0 .01px rgba(0,0,0,.3), 0 3px 3px rgba(0,0,0,.15);
-}
-
-.featured-news-excerpt {
-  /*left: 30px;*/
-  /*bottom: 30px;*/
-  /*position: absolute;*/
-  display: block;
-  /*width: calc(35% - 45px);*/
-  padding-top: 25px;
-  padding-bottom: 25px;
-  padding-left: 20px;
-  text-align: left;
+.mobile-secondary{
+  background-color: white;
   color:black;
-  background-color: rgba(255,255,255,0.5);
-  box-shadow: 0 0 10px rgba(0,0,0,.15), 0 3px 3px rgba(0,0,0,.15);
-  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.15), 0 3px 3px rgba(0,0,0,.15);
-  transition: all .2s ease-in-out;
+  box-shadow:0 0 15px rgba(0,0,0,.4);
 }
-.featured-news-excerpt:hover{
-  background-color: rgba(255,255,255,0.9);
+
+.mobile-primary, .mobile-secondary{
+  padding:10px;
+  column-count: 2;
+  text-align: center;
+}
+
+.mobile-primary a, .mobile-secondary a{
+  transition: color .2s ease-out, background .2s ease-in;
+}
+
+.mobile-primary a:hover{
+  background-color: #00375D;
+}
+
+.mobile-secondary a:hover{
+  background-color: #ccc;
+}
+
+.mobile-primary a{
+  color:white;
+}
+
+.mobile-secondary a{
+  color: black;
+}
+
+.nav-pagination>div>div{
+  /* Centers pagination */
+  margin:auto;
 }
 
 /* ==========================================================================
-  NON-FEATURED NEWS
+  4.0 FOOTER
 ========================================================================== */
 
-.meta-news {
-  background-color:#fff;
-  margin-bottom: 60px;
-  padding: 0;
-  transition: all .2s ease-in-out, color .2s ease-out;
+.tech-footer{
+  background-color: #0070BB;
+  color: white;
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.tech-footer p{
+  margin:0;
+  font-size: 1em;
+}
+.tech-footer a{
+  color: white;
+  text-decoration: underline;
+}
+.tech-footer a:hover{
+  text-shadow: #333 2px 2px 4px;
+}
+.wps-footer{
+  box-shadow:0 0 15px rgba(0,0,0,.4);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: white;
+}
+.wps-footer .wps-logo{
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.meta-news:hover {
-  transform: scale(1.05);
-}
-.meta-news:hover .panel-sm-text {
-  color: #0070BB;
+
+/* ==========================================================================
+  5.0 FRONT PAGE
+========================================================================== */
+
+/* 5.1 Splashpage */
+.splash-page h1 {
+  color: white;
+  font-size: 25px; /** fallback size**/
+  font-size: 20vw;
+  text-shadow: 0 0 30px rgba(0,0,0,.7);
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
 }
 
-.meta-news:hover .btn{
-  background-color:#00375D;
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .splash-page h1{
+    font-size: 11vw;
+  }
 }
 
-.panel-sm-img {
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .splash-page h1{
+    font-size: 9vw;
+  }
+}
+
+.splash-page {
+  background-size: cover;
+  /* The 80% should keep the main enterance of the school in frame on mobile */
+  background-position: 80% 50%; 
   width: 100%;
-  height: 175px;
-  background-position: center;
-  background-size: cover;
+  /* This is overridden by JS adjustSplash() */
+  height: 100vh; 
 }
 
-.panel-sm-text {
-  text-align: left;
-  padding: 20px;
+.explore-link{
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 10px black;
+  font-size: 2em;
+  z-index: 50;
+  display: inline-block;
 }
 
-.panel-sm-text a {
-  color: black;
+.explore-link:hover {
+  color:white;
   text-decoration: none;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
-.about-panel {
-  background-image: url(' https://techhigh-jeff-how.c9users.io/wp-content/uploads/2017/10/Untitled-1.png ');
-  background-size: cover;
-  background-position: 50% 50%;
-  max-width: none;
-  max-height: none;
-  padding: 30px;
-}
-
-.panel[data-type=facts-info] h3 {
-  font-weight: 800;
-  font-size: 3.5em;
+#explore-link {
+  position: absolute;
+  top: 85%;
+  width: 100%;
+  text-align: center;
 }
 
 .tagline {
@@ -450,186 +397,226 @@ h1 .navbar-brand {
   display: inline-block;
 }
 
-.splash-page {
-  background-image: url('https://techhigh-jeff-how.c9users.io/wp-content/uploads/2018/01/Worcester-Technical-High-School.jpg');
+/* 5.2 Featured News =======================================================*/
+.featured-news-card {
+  margin-bottom: 30px;
+  position: relative;
+  background-position: center;
   background-size: cover;
-  /** The 80% should keep the main enterance of the school in frame on mobile **/
-  background-position: 80% 50%;
-  width: 100%;
-  /** This is overridden by JS adjustSplash() **/
-  height: 100vh;
+  padding-top: 300px;
+  padding-bottom: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+  box-shadow: 0 0 .01px rgba(0,0,0,.3), 0 3px 3px rgba(0,0,0,.15);
 }
 
-.splash-page h1 {
-  color: white;
-  font-size: 25px; /** fallback size**/
-  font-size: 11vw;
-  text-shadow: 0 0 30px rgba(0,0,0,.7);
+.featured-news-excerpt {
+  display: block;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 20px;
+  text-align: left;
+  color:black;
+  background-color: rgba(255,255,255,0.5);
+  box-shadow: 0 0 10px rgba(0,0,0,.15), 0 3px 3px rgba(0,0,0,.15);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.15), 0 3px 3px rgba(0,0,0,.15);
+  transition: all .2s ease-in-out;
+}
+
+.featured-news-excerpt:hover{
+  background-color: rgba(255,255,255,0.9);
+}
+
+/* 5.3 Front Cards ========================================================*/
+/* Card background image URLs are inline in theme */
+
+.front-card {
+  display: block;
+  position:relative;
+  background-color:#fff;
+  margin-bottom: 30px;
+  padding: 0;
+  transition: all .2s ease-in-out, color .2s ease-out;
+  box-shadow: 0 0 10px rgba(0,0,0,.3), 0 3px 3px rgba(0,0,0,.15);
+}
+@media (min-width: 576px){
+/* will be applied for small and larger */
+	.front-card{
+		/* @Note: these override values in the class above */
+		margin-bottom: 60px;
+	}
+}
+
+.front-card-img{
+  height: 175px;
+  background-position: center;
+  background-size: cover;
+}
+
+@media (min-width: 576px){
+/* will be applied for small and larger */
+  .front-card-text{
+    height:179px;
+    background-image: none !important;
+  }
+}
+
+.front-card-text{
+  padding: 0;
+  text-align:left;
+  text-decoration:none;
+  color: black;
+  background-position: center;
+  background-size: cover;
+}
+
+.front-card-text>div{
+  background-color:rgba(100%,100%,100%,0.5);
+  padding:20px;
+}
+
+.front-card:hover {
+  transform: scale(1.05);
+}
+
+.front-card:hover .front-card-text{
+  text-decoration:underline;
+  color: #00375D;
+}
+
+.front-card-btn{
   position: absolute;
-  top: 45%;
-  left: 0;
-  right: 0;
+  bottom:20px;
+  right: 20px;
 }
 
-.explore-link{
-  font-weight: bold;
-  color: white;
-  text-shadow: 0 0 10px black;
-  font-size: 2em;
-  z-index: 50;
+/* 5.4 Academics */
+.gym-fix{
+  height:12px;
+}
+
+/* 5.5 Technical Areas */
+
+@media (min-width: 576px){
+/* will be applied for small and larger */
+  .shop-card-text{
+    height: 350px;
+  }
+}
+
+.shop-card-text h4 a{
+  color: black;
+}
+.shop-card-text h4 a:hover{
+  color: #00375D;
+}
+
+.shop-links>ul{
+  list-style-type:none;
+  padding-left: 5px;
+  /* This resets the ul element's text decoration from the parent */
   display: inline-block;
 }
 
-.explore-link:after {
-  color: white;
-  font-family: FontAwesome;
-  font-size: inherit;
-  content: "\f078";
-  display: block;
+.shop-links>ul li{
+  font-weight: bold;
 }
 
-.explore-link:hover {
-  color:white;
+.shop-links li a{
+  color: #333;
   text-decoration: none;
-  -webkit-transition: all 0.2s ease-in-out 0s;
-  transition: all 0.2s ease-in-out 0s;
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
 }
 
-#explore-modal {
-  position: absolute;
-  top: 85%;
-  width: 100%;
-  text-align: center;
+.shop-links li a:hover{
+  text-decoration: underline;
+  color: #555;
 }
 
-/* ==========================================================================
-  Front page Big Panels
-========================================================================== */
-.technical-areas, .upcoming-events {
- background-color:#ccc;
+.shop-card-text>div{
+  background-color:rgba(100%,100%,100%,0.8);
+  padding:20px;
 }
 
 /* ==========================================================================
-  Footers
+  6.0 SEARCH
 ========================================================================== */
-.copyright{
-  margin-top: 15px;
-  background-color: #0070BB;
-  color:white;
-  padding-top: 15px;
-  padding-bottom:15px;
-}
-.copyright p{
-  margin: 0;
+.modal-content{
+  margin-top:100px;
 }
 
-.equal-opportunity{
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #dee2e6;
+.modal-header{
+  color:#0070BB ;
 }
 
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-  .btn-cta {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 100px;
-    padding-right: 100px;
-  }
-}
 /* ==========================================================================
-  MOBILE
+   7.0 FEED CARDS 
 ========================================================================== */
 
-/* Small devices (Phones, 576px maximum) */
-@media only screen and (max-width: 576px) {
+/* 5.3 Front Cards ========================================================*/
+/* Card background image URLs are inline in theme */
 
-  h4 {
-    font-size: 20px;
-  }
-  .site-main header {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-  .site-main header h1 {
-    font-size: 45px;
-  }
+.feed-card {
+  display: block;
+  position:relative;
+  background-color:#fff;
+  margin-bottom: 30px;
+  padding: 0;
+  transition: all .2s ease-in-out, color .2s ease-out;
+  box-shadow: 0 0 10px rgba(0,0,0,.3), 0 3px 3px rgba(0,0,0,.15);
+}
 
-  .site-main header h3 {
-    font-size: 20px;
-  }
+@media (min-width: 576px){
+/* will be applied for small and larger */
+	.feed-card{
+		/* @Note: these override values in the class above */
+		margin-bottom: 60px;
+	}
+}
 
-  .meta-news {
-    /* min-width: 340px; */
-    margin-bottom: 30px;
-  }
+.feed-card-img{
+  height: 175px;
+  background-position: center;
+  background-size: cover;
+}
 
-  .splash-page h1 { font-size: 4.5em; }
-
-  .featured-news {
-    padding-top: 50px !important;
-  }
-
-  .explore-link { font-size: 1.5em; }
-
-  .btn-cta {
-    margin-bottom: 20px;
-  }
-  .panel.img[data-type=academies]{
-    width: 10%;
-    height: 10%;
+@media (min-width: 576px){
+/* will be applied for small and larger */
+  .feed-card-title{
+    background-image: none !important;
   }
 }
 
-
-/* SEARCH */
-
-.search-container {
-    width: 100%;
-    padding-left:50px;
-    padding-right:50px;
-    padding-bottom:50px;
-    padding-top:50px;
-    margin:auto;
-}
-.search-page-title {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 40px;
-    font-weight: 300 !important;
-    letter-spacing: 2px;
-    line-height: 50px;
-    text-align:center;
-    display:block;
-    text-transform:uppercase;
-    padding-top:50px;
-    padding-bottom:25px;
-}
-.search-post-title {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 25px;
-    font-weight: 600 !important;
-    letter-spacing: 2px;
-    line-height: 50px;
-    text-align:left;
-    display:block;
-}
-.search-post-excerpt {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 400 !important;
-    letter-spacing: 1px;
-    line-height: 15px;
-    text-align:left;
-    display:block;
+.feed-card-text{
+  padding: 0;
+  text-align:left;
+  text-decoration:none;
+  color: black;
 }
 
-@media only screen and (max-width: 768px) {
-        .search-container {
-        width: 100%;
-        padding-left:15px;
-        padding-right:15px;
-    }
+.feed-card-excerpt{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.feed-card-title{
+  background-position: center;
+  background-size: cover;
+}
+
+.feed-card-title>h3{
+  background-color:rgba(100%,100%,100%,0.5);
+  padding:20px;
+}
+
+.feed-card:hover {
+  transform: scale(1.05);
+}
+
+.feed-card:hover .front-card-text{
+  text-decoration:underline;
+  color: #00375D;
+}
+
+.feed-card-btn{
+  margin-bottom:20px;
 }

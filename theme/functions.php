@@ -41,7 +41,12 @@ function techhigh_setup(){
 		'caption',
 	) );
 
-	// Enable support for Post Formats.
+	/**
+	 * Some day this theme will support this stuff,
+	 * but sadly, today is not that day...
+	 * 
+	 * @todo: Create support for this stuff
+	//Enable support for Post Formats.
 	add_theme_support( 'post-formats', array(
   	'aside',
   	'image',
@@ -51,6 +56,7 @@ function techhigh_setup(){
   	'gallery',
   	'audio',
 	) );
+	**/
 	
 	// Add theme support for HTML5 search form
 	add_theme_support( 'html5', array( 'search-form' ) );
@@ -143,40 +149,41 @@ add_filter( 'wp_nav_menu_items', 'techhigh_search_link', 10, 2 );
 function techhigh_search_link ( $items, $args ) {
     if ( $args->theme_location == 'primary' ) {
         $items .= '<li class="nav-item nav-search-li">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#searchModal">
+                    <a class="nav-link search-link" href="#" data-toggle="modal" data-target="#searchModal">
                       <i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search
                     </a>
                   </li>';
     }
     return $items;
 }
+
 /**
  * Wordpress Page Feeds
  */
  
-add_action('init', 'customRSS');
-function customRSS(){
-        add_feed('student', 'customRSSFunc');
-}
+// add_action('init', 'customRSS');
+// function customRSS(){
+//         add_feed('student', 'customRSSFunc');
+// }
 
-function customRSSFunc(){
-        get_template_part('rss', 'students');
-}
+// function customRSSFunc(){
+//         get_template_part('rss', 'students');
+// }
 
-function rssLanguage(){
-        update_option('rss_language', 'en');
-}
+// function rssLanguage(){
+//         update_option('rss_language', 'en');
+// }
 
-add_action('admin_init', 'rssLanguage');
+// add_action('admin_init', 'rssLanguage');
 
-function my_custom_rss() {
+// function my_custom_rss() {
 
-	if ( 'students' === get_query_var( 'post_type' ) ) {
-		get_template_part( 'feed', 'students' );
-	} else {
-		get_template_part( 'feed', 'rss2' );
-	}
-}
+// 	if ( 'students' === get_query_var( 'post_type' ) ) {
+// 		get_template_part( 'feed', 'students' );
+// 	} else {
+// 		get_template_part( 'feed', 'rss2' );
+// 	}
+// }
 
 
 /**
@@ -216,5 +223,31 @@ function my_theme_archive_title( $title ) {
 }
  
 add_filter( 'get_the_archive_title', 'my_theme_archive_title' );
+
+/**
+ * This works with the shortcode widget
+ * to display posts using the shortcode-card.php 
+ * template-part
+ */
+function be_dps_template_part( $output, $original_atts ) {
+	ob_start();
+	get_template_part( 'template-parts/shortcodes/shortcode', 'card' );
+	$new_output = ob_get_clean();
+	if( !empty( $new_output ) )
+		$output = $new_output;
+	return $output;
+}
+add_action( 'display_posts_shortcode_output', 'be_dps_template_part', 10, 2 );
+
+/**
+ * Filter the except length to 20 words.
+ *
+ * @param int $length Excerpt length.
+ * @return int (Maybe) modified excerpt length.
+ */
+function wpdocs_custom_excerpt_length( $length ) {
+    return 20;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
 ?>

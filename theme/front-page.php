@@ -12,24 +12,37 @@
  
 get_header(); ?>
 
-  <div id="splash-page" class="splash-page" data-type="splash-image">
+  <div id="splash-page"
+       class="splash-page" 
+       data-type="splash-image"
+       style="background-image: url('<?php
+        echo get_theme_file_uri( '/assets/images/wths.jpg' )
+       ?>">
+    
     <div class="tagline">
       <div class="motto"><strong>The School That Works</strong></div>
       <div class="mission"><em>&ldquo;Creating the Future through Technology, Training, and Talent&rdquo;</em></div>
     </div>
-    <h1>Worcester Tech</h1>
-    <div id="explore-modal">
-      <a href="#news-section" class="explore-link">Explore Worcester Tech</a>
+    <h1>
+      <span class="d-none d-md-block">Worcester Technical<br>High School</span>
+      <span class="d-block d-md-none">Worcester<br>Tech</span>
+    </h1>
+    <div id="explore-link">
+      <a href="#news-section" class="explore-link">Explore Worcester Tech
+      <br><i class="fas fa-chevron-down"></i></a>
     </div>
-  </div>
+  </div><!-- /#splash-page -->
   
-  <!-- Featured News -->
+  <!-- News -->
   
-  <section class="panel container-fluid" data-type="posts" data-width="span">
+  <section id="news-section" class="container-fluid">
     <header class="section-header">
       <h1>Latest News</h1>
       <h3>The Latest News from Worcester Tech</h3>
     </header>
+    
+    <!-- Featured News -->
+    
     <div class="row"><div class="col">
       <?php 
         $args = array(
@@ -39,7 +52,7 @@ get_header(); ?>
         $front_page_posts = get_posts( $args );
           if( $front_page_posts ) : 
             foreach ($front_page_posts as $post ) : setup_postdata( $post ); ?>
-              <div class="featured-news"
+              <div class="featured-news-card"
                    style="background-image: url('<?php echo get_the_post_thumbnail_url( $post->ID, 'full' ); ?>'); ">
                 <div class="featured-news-excerpt">
                   <h4><?php the_title(); ?></h4>
@@ -65,23 +78,25 @@ get_header(); ?>
           
           if( $front_page_posts ) : 
             foreach ( $front_page_posts as $post ) : setup_postdata( $post ); ?>
-              <div class="col-sm panel-sm meta-news">
-                <a href="<?php the_permalink(); ?>">
-                  <div class="panel-sm-img d-none d-sm-block" 
+              
+              <div class="col-md-3 col-sm-6">
+                <a href="<?php the_permalink(); ?>" class="front-card">
+                  <div class="d-none d-sm-block front-card-img" 
                     style="background-image: url('<?php echo get_the_post_thumbnail_url( $post->ID, 'full' ); ?>');">
                   </div>
+                  <div class="front-card-text"
+                       style="background-image: url('<?php echo get_the_post_thumbnail_url( $post->ID, 'full' ); ?>');">
+                    <div>
+                      <h4><?php the_title(); ?></h4>
+                      <?php echo get_the_date(); ?>
+                    </div>
+                  </div>
                 </a>
-                <div class="panel-sm-text">
-                  <a href="<?php the_permalink(); ?>">
-                    <h4><?php the_title(); ?></h4>
-                  </a>
-                  <?php echo get_the_date(); ?>
-                </div>
-              </div>
+              </div><!-- /.col -->
             <?php endforeach;
             
           endif; wp_reset_postdata(); ?>
-    </div>
+    </div><!-- /.row -->
     
     <div class="row"><div class="col">
       <a class="btn btn-primary btn-cta" href="<?php echo get_site_url(); ?>/news/">More Tech News</a>
@@ -90,8 +105,8 @@ get_header(); ?>
   
   <!-- Events Section -->
   
-  <section class="panel container-fluid" data-type="event" data-width="span">
-    <header>
+  <section id="events-section" class="container-fluid">
+    <header class="section-header">
       <h1> Upcoming Events </h1>
       <h3> What's happening at Worcester Tech </h3>
     </header>
@@ -106,16 +121,14 @@ get_header(); ?>
   
   <!-- Academics Section -->
 
-  <section class="panel container-fluid" data-width="span">
-    <header>
-      <h1> Academics </h1>
-      <h3> Education for equity in both the classroom and the work place</h3>
+  <section id="academics-section" class="container-fluid">
+    <header class="section-header">
+      <h1>Academics</h1>
+      <h3>Education for equity in both the classroom and the work place</h3>
     </header>
-    <?php $academics = get_page_by_path('academics'); ?>
-    <h1><?php echo $page->post_title; ?></h1>
-    <?php echo $page-> post_content; wp_reset_postdata(); ?>
+    
   <div class="row">
-  <?php 
+  <?php // get all the academic pages
     $academics = array( get_page_by_path('ela'), 
                         get_page_by_path('math'),
                         get_page_by_path('science'),
@@ -124,40 +137,46 @@ get_header(); ?>
                         get_page_by_path('mcas'),
                         get_page_by_path('physed'),
                         get_page_by_path('sped') );
-    $i = 0;      
+    $i = 0; 
+    // four pages per row
     foreach($academics as $page): $i++;
       if($i==5): ?>
         </div><!--/.row-->
         <div class="row">
       <?php endif; ?>  
         
-      <div class="col-sm panel-sm meta-news">
-        <a href="<?php echo get_page_link( $page->ID ); ?>">
-          <div class="panel-sm-img d-sm-block d-none" style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
+      <div class="col-md-3 col-sm-6">
+        <a href="<?php echo get_page_link( $page->ID ); ?>"
+           class="front-card">
+          <div class="d-none d-sm-block front-card-img" 
+               style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
+          </div>
+          <div class="front-card-text"
+               style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
+            <div><h3><?php echo $page->post_title; ?></h3></div>
+            <?php 
+              if( strlen($page->post_title) > 20 ){
+                echo '<div class="gym-fix"></div>';
+              }
+            ?>
+          </div>
+          <div class="btn btn-primary btn-sm front-card-btn">
+              Learn More &hellip;
           </div>
         </a>
-        <div class="panel-sm-text">
-          <h3 class="panel-sm-title"><?php echo $page->post_title; ?></h3>
-          <a href="<?php echo get_page_link( $page->ID ); ?>" class="btn btn-secondary btn-sm">
-            Learn More
-          </a>
-        </div>
-      </div>
+      </div><!-- /.col -->
     <?php endforeach; wp_reset_postdata(); ?>
+    </div><!--/.row-->
   </section>
   
     <!-- Technical Areas Section -->
 
-  <section class="panel container-fluid" data-width="span">
-    <header>
-      <h1> Technical Areas </h1>
-      <h3> Training students to make meaningful contributions </h3>
-      <h3> in both the classroom and the workforce</h3>
+  <section class="container-fluid">
+    <header class="section-header">
+      <h1>Technical Areas</h1>
+      <h3>Training students to make meaningful contributions<br>
+      in both the classroom and the workforce</h3>
     </header>
-  
-    <?php $techareas = get_page_by_path('technical-areas'); ?>
-    <h1><?php echo $page->post_title; ?></h1>
-    <?php echo $page-> post_content; wp_reset_postdata(); ?>
     
     <div class="row">
       <?php 
@@ -166,20 +185,31 @@ get_header(); ?>
                             get_page_by_path('construction'),
                             get_page_by_path('it') );
         foreach($techareas as $page): $i++; ?>
-          <div class="col-sm panel-sm meta-news">
-            <a href="<?php echo get_page_link( $page->ID ); ?>">
-              <div class="panel-sm-img d-sm-block d-none" style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="front-card">
+              <div class="d-none d-sm-block front-card-img" 
+                   style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
               </div>
-            </a>
-            <div class="panel-sm-text">
-              <h3 class="panel-sm-title"><?php echo $page->post_title; ?></h3>
-              <a href="<?php echo get_page_link( $page->ID ); ?>" class="btn btn-secondary btn-sm">
-                Learn More
+              <div class="front-card-text shop-card-text"
+                   style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
+                <div>
+                  <h4>
+                    <a href="<?php the_permalink($page->ID); ?>">
+                      <?php echo $page->post_title; ?>
+                    </a>
+                  </h4>
+                  <div class="shop-links">
+                    <?php echo get_post_meta($page->ID, 'shops', true); ?>
+                  </div>
+                </div>
+              </div>
+              <a class="btn btn-primary btn-sm front-card-btn" href="<?php the_permalink($page->ID); ?>">
+                Learn More &hellip;
               </a>
-            </div>
-          </div>
+            </div><!-- /.front-card -->
+          </div><!-- /.col -->
         <?php endforeach; wp_reset_postdata(); ?>
-    </div>
+    </div><!-- /.row -->
     <div class="row"><div class="col">
       <a class="btn btn-primary btn-cta" href="<?php echo get_site_url(); ?>/technical-areas/">Explore Technical Areas</a>
     </div></div>
@@ -187,36 +217,33 @@ get_header(); ?>
   
   <!-- About WTHS Section -->
   
-  <div class="panel" data-type="facts-info">
-    <header>
+  <section class="container-fluid">
+    <header class="section-header">
       <h1>About Worcester Tech</h1>
       <h4>The School That Works</h4>
       <p>Creating the Future Through Technology, Training, and Talent</p>
     </header>
     
-    <!-- About Panel -->
-    <div class="panel-lg-img about-panel">
-      <div class="row">
-        <div class="col-sm">
-          <h3>98%</h3>
-          <h4>Graduation Rate</h4>
-        </div>
-        
-        <div class="col-sm">
-          <h3>22</h3>
-          <h4>Technical Areas</h4>
-        </div>
-        
-        <div class="col-sm">
-          <h3>1,400</h3>
-          <h4>Students</h4>
-        </div>
+    <div class="row">
+      <div class="col-sm">
+        <h3>98%</h3>
+        <h4>Graduation Rate</h4>
       </div>
+        
+      <div class="col-sm">
+        <h3>22</h3>
+        <h4>Technical Areas</h4>
+      </div>
+      
+      <div class="col-sm">
+        <h3>1,400</h3>
+        <h4>Students</h4>
+      </div>
+    </div><!-- /.row -->
     
-      <div class="row"><div class="col">
-        <a class="btn btn-primary btn-cta" href="<?php echo get_site_url(); ?>/about/">More About WTHS</a>
-      </div></div><!-- /.col /.row -->
-    </div>
+    <div class="row"><div class="col">
+      <a class="btn btn-primary btn-cta" href="<?php echo get_site_url(); ?>/about/">More About WTHS</a>
+    </div></div><!-- /.col /.row -->
   </section>
 
 <?php get_footer(); ?>

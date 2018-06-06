@@ -16,26 +16,30 @@
   /**
    * Extend Bootstrap navbar to include secondary nav elements
    */
-  $('#primaryNav').on('show.bs.collapse', function () {
-    $('#secondaryNavLinks').children('li').addClass('secondary-nav-links');
-    $('#primaryNavLinks').append($('#secondaryNavLinks').html());
-  });
-
-  $('#primaryNav').on('hidden.bs.collapse', function () {
-    $('#primaryNavLinks').children('.secondary-nav-links').remove();
-  });
+   
+  // Removed this feature:
   
+  // $('#primaryNav').on('show.bs.collapse', function () {
+  //   $('#secondaryNavLinks').children('li').addClass('secondary-nav-links');
+  //   $('#primaryNavLinks').append($('#secondaryNavLinks').html());
+  // });
+
+  // $('#primaryNav').on('hidden.bs.collapse', function () {
+  //   $('#primaryNavLinks').children('.secondary-nav-links').remove();
+  // });
+  
+  // Collapse the mobile nav bar if it's open when the screen changes
    $(window).on('resize', function () {
     // This is part of the 
     if (window.innerWidth > 768) {
-      $('#primaryNav').collapse('hide');
+      $('#mobileNav').collapse('hide');
     }
    });
   
   $(window).on('resize', function () {
     // This is part of the 
     if (window.innerWidth > 768) {
-      $('#primaryNav').collapse('hide');
+      $('#mobileNav').collapse('hide');
     }
     
     // Adjust header
@@ -66,6 +70,10 @@
     if( $('#splash-page').length>0 ){ // Splash-page class is present
       adjustSplash();
     }
+    
+    // Testing new approach to nav collapse
+    $('#mobilePrimary').append($('#primaryNavLinks').find('a').not('.search-link').clone());
+    $('#mobileSecondary').append($('#secondaryNavLinks').find('a').clone());
   })
   
   
