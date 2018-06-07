@@ -32,24 +32,7 @@ get_header(); ?>
     <?php endif; ?>
   
     <aside>
-      <hr>
-        <div class="row">
-          <div class="col-sm">
-            <h3>1,400</h3>
-            <h5>Students</h5>
-          </div>
-          
-           <div class="col-sm">
-            <h3>16</h3>
-            <h5>Student Clubs</h5>
-          </div>
-          
-           <div class="col-sm">
-            <h3>12</h3>
-            <h5>Athletic Programs</h5>
-          </div>
-        </div>
-      <hr>
+     
       
       <?php the_content() ?>
       
