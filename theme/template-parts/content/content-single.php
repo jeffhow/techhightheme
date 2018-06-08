@@ -15,7 +15,7 @@
 	
 	<?php	get_template_part( 'template-parts/components/component', 'heading' ); ?>
 
-	<div class="entry-content text-left">
+	<div class="entry-content">
 		<?php	the_content(); ?>
 	</div><!-- .entry-content -->
 	
