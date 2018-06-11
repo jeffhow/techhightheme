@@ -189,7 +189,7 @@ function techhigh_search_link ( $items, $args ) {
 /**
  * Register sidebars and widgetized areas.
  */
-function agenda_cal_front_page_widget() {
+function techhigh_widgets() {
 
 	register_sidebar( array(
 		'name'          => 'Front Page Agenda Calendar',
@@ -199,9 +199,15 @@ function agenda_cal_front_page_widget() {
 		'before_title'  => '<h2>',
 		'after_title'   => '</h2>',
 	) );
-
+  
+  register_sidebar( array( 
+    'name'  =>  'Footer JS Content',
+    'id'    =>  'footer_js',
+    'before_widget' => '',
+		'after_widget'  => '',
+  ) );
 }
-add_action( 'widgets_init', 'agenda_cal_front_page_widget' );
+add_action( 'widgets_init', 'techhigh_widgets' );
 
 /**
  * Removes category names from the archive title
