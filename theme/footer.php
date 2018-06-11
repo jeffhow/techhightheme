@@ -35,7 +35,8 @@
       </div><!-- /.col -->
     </div><!-- /.row -->
 </footer>
-  
+  <!-- Event Feed Hook -->
+  <?php dynamic_sidebar( 'footer_js' ); ?>
   <?php wp_footer(); ?>
 </body>
 </html>
