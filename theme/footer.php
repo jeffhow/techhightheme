@@ -18,11 +18,11 @@
 <footer class="footer container-fluid wps-footer">
     <div class="row">
       <div class="d-block d-sm-none col-sm-2 wps-logo">
-        <img class="img-fluid" src="https://techhigh-jeff-how.c9users.io/wp-content/uploads/2018/01/WPS-logo_K1.gif">
+        <img class="img-fluid" src="<?php echo get_theme_file_uri( '/assets/images/wps-logo.gif' ); ?>">
       </div><!-- /.col -->
       <div class="col">
         <small>
-          <img class="img-fluid float-left d-none d-sm-block" src="https://techhigh-jeff-how.c9users.io/wp-content/uploads/2018/01/WPS-logo_K1.gif" style="margin-right:20px">
+          <img class="img-fluid float-left d-none d-sm-block" src="<?php echo get_theme_file_uri( '/assets/images/wps-logo.gif' ); ?>" style="margin-right:20px">
           The <a href="worcesterschools.org" target="_blank">Worcester Public Schools</a>
           is an Equal Opportunity/Affirmative Action Employer/Educational Institution and
           does not discriminate regardless of race, color, gender, age, religion, national
@@ -35,6 +35,7 @@
       </div><!-- /.col -->
     </div><!-- /.row -->
 </footer>
+
   <!-- Event Feed Hook -->
   <?php dynamic_sidebar( 'footer_js' ); ?>
   <?php wp_footer(); ?>
