@@ -16,17 +16,6 @@
   /**
    * Extend Bootstrap navbar to include secondary nav elements
    */
-   
-  // Removed this feature:
-  
-  // $('#primaryNav').on('show.bs.collapse', function () {
-  //   $('#secondaryNavLinks').children('li').addClass('secondary-nav-links');
-  //   $('#primaryNavLinks').append($('#secondaryNavLinks').html());
-  // });
-
-  // $('#primaryNav').on('hidden.bs.collapse', function () {
-  //   $('#primaryNavLinks').children('.secondary-nav-links').remove();
-  // });
   
   // Collapse the mobile nav bar if it's open when the screen changes
    $(window).on('resize', function () {
@@ -71,9 +60,14 @@
       adjustSplash();
     }
     
-    // Testing new approach to nav collapse
+    // add all elements to collapsed nav
     $('#mobilePrimary').append($('#primaryNavLinks').find('a').not('.search-link').clone());
     $('#mobileSecondary').append($('#secondaryNavLinks').find('a').clone());
+    
+    // enables match-height
+    $('.feed-card').matchHeight();
+    $('.front-card-text').matchHeight();
+    $('.shop-card-text').matchHeight();
   })
   
   
@@ -107,10 +101,10 @@
   }
   
   
-  /**
-   * https://css-tricks.com/snippets/jquery/smooth-scrolling/
-   * Chris Coyier, 2018
-   */
+/**
+ * https://css-tricks.com/snippets/jquery/smooth-scrolling/
+ * Chris Coyier, 2018
+ */
 // Select all links with hashes
 $('a[href*="#"]')
   // Remove links that don't actually link to anything
