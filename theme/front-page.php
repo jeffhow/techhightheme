@@ -70,9 +70,9 @@ get_header(); ?>
     <div class="row">
       <?php 
         $args = array(
-          'posts_per_page'  => '4',
-          'category'        => get_cat_ID( 'News' ),
-          'category__not_in' => get_cat_ID( 'Featured' )
+          'posts_per_page'   => '4',
+          'category'         => get_cat_ID( 'News' ),
+          'category__not_in' => get_cat_ID( 'Featured' ),
         );
           $front_page_posts = get_posts( $args );
           
@@ -153,12 +153,11 @@ get_header(); ?>
           </div>
           <div class="front-card-text"
                style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
-            <div><h3><?php echo $page->post_title; ?></h3></div>
-            <?php 
-              if( strlen($page->post_title) > 20 ){
-                echo '<div class="gym-fix"></div>';
-              }
-            ?>
+            <div>
+              <h3><?php echo $page->post_title; ?></h3>
+              <div><?php echo $page->post_excerpt; ?></div>
+            </div>
+            
           </div>
           <div class="btn btn-primary btn-sm front-card-btn">
               Learn More &hellip;

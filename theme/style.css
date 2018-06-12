@@ -456,7 +456,7 @@ h1 .navbar-brand {
 @media (min-width: 576px){
 /* will be applied for small and larger */
   .front-card-text{
-    height:179px;
+    /*height:179px;*/
     background-image: none !important;
   }
 }
@@ -472,7 +472,7 @@ h1 .navbar-brand {
 
 .front-card-text>div{
   background-color:rgba(100%,100%,100%,0.5);
-  padding:20px;
+  padding:20px 20px 50px 20px;
 }
 
 .front-card:hover {
@@ -491,16 +491,16 @@ h1 .navbar-brand {
 }
 
 /* 5.4 Academics */
-.gym-fix{
-  height:12px;
-}
+/*.gym-fix{*/
+/*  height:12px;*/
+/*}*/
 
 /* 5.5 Technical Areas */
 
 @media (min-width: 576px){
 /* will be applied for small and larger */
   .shop-card-text{
-    height: 350px;
+    /*height: 350px;*/
   }
 }
 

@@ -118,9 +118,18 @@ function techhigh_scripts(){
   wp_enqueue_script( 'fontfaceobserver-script', get_theme_file_uri( '/assets/js/fontfaceobserver.js' ),
     array( 'jquery' ), '1.11.0', true );
   
+  // jQuery Match Height
+  wp_enqueue_script( 'jquery-match-height-script', get_theme_file_uri( '/assets/js/jquery.matchHeight.js' ),
+    array( 'jquery' ), '0.7.0', true );
+  
   // Techhigh javascript
 	wp_enqueue_script( 'techhigh-script', get_theme_file_uri( '/assets/js/techhigh.js' ), 
-    array( 'jquery', 'popper-script', 'bootstrap-script', 'fontfaceobserver-script' ), '2.0', true  );
+    array( 'jquery',
+           'popper-script',
+           'bootstrap-script',
+           'fontfaceobserver-script',
+           'jquery-match-height-script'
+    ), '2.0', true  );
   
   /** CSS files **/
   // Bootstrap stylesheet
@@ -156,34 +165,6 @@ function techhigh_search_link ( $items, $args ) {
     }
     return $items;
 }
-
-/**
- * Wordpress Page Feeds
- */
- 
-// add_action('init', 'customRSS');
-// function customRSS(){
-//         add_feed('student', 'customRSSFunc');
-// }
-
-// function customRSSFunc(){
-//         get_template_part('rss', 'students');
-// }
-
-// function rssLanguage(){
-//         update_option('rss_language', 'en');
-// }
-
-// add_action('admin_init', 'rssLanguage');
-
-// function my_custom_rss() {
-
-// 	if ( 'students' === get_query_var( 'post_type' ) ) {
-// 		get_template_part( 'feed', 'students' );
-// 	} else {
-// 		get_template_part( 'feed', 'rss2' );
-// 	}
-// }
 
 
 /**
