@@ -1,6 +1,6 @@
 <?php 
 /**
- * The template for displaying the Students page 
+ * The template for displaying the News page 
  *  
  * Here's some placeholder text to brighten up your day! :)
  * 
