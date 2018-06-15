@@ -46,11 +46,6 @@
           <div class="front-card-text"
                style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
             <div><h3><?php echo $page->post_title; ?></h3></div>
-            <?php 
-              if( strlen($page->post_title) > 20 ){
-                echo '<div class="gym-fix"></div>';
-              }
-            ?>
           </div>
           <div class="btn btn-primary btn-sm front-card-btn">
               Learn More &hellip;
