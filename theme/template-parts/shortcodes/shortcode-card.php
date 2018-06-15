@@ -14,7 +14,7 @@
 
 <div class="col-sm">
   <div class="feed-card" style="padding:20px;">
-  <h4><?php the_date(); ?></h4>
+  <h4><?php the_date(); ?></h4><hr>
   <small>Daily Announcement</small>
   <div class="text-left"><?php the_excerpt(); ?></div>
   <a href="<?php the_permalink(); ?>" class="btn btn-sm btn-outline-primary">
