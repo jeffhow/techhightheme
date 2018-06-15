@@ -68,7 +68,7 @@
     $('.feed-card').matchHeight();
     $('.front-card-text').matchHeight();
     $('.shop-card-text').matchHeight();
-  })
+  });
   
   
   /**
