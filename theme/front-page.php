@@ -82,10 +82,10 @@ get_header(); ?>
               <div class="col-md-3 col-sm-6">
                 <a href="<?php the_permalink(); ?>" class="front-card">
                   <div class="d-none d-sm-block front-card-img" 
-                    style="background-image: url('<?php echo get_the_post_thumbnail_url( $post->ID, 'full' ); ?>');">
+                    style="background-image: url('<?php echo get_the_post_thumbnail_url( $post->ID, 'medium_large' ); ?>');">
                   </div>
                   <div class="front-card-text"
-                       style="background-image: url('<?php echo get_the_post_thumbnail_url( $post->ID, 'full' ); ?>');">
+                       style="background-image: url('<?php echo get_the_post_thumbnail_url( $post->ID, 'medium_large' ); ?>');">
                     <div>
                       <h4><?php the_title(); ?></h4>
                       <?php echo get_the_date(); ?>
@@ -149,10 +149,10 @@ get_header(); ?>
         <a href="<?php echo get_page_link( $page->ID ); ?>"
            class="front-card">
           <div class="d-none d-sm-block front-card-img" 
-               style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
+               style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'medium_large' ); ?>');">
           </div>
           <div class="front-card-text"
-               style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
+               style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'medium_large' ); ?>');">
             <div>
               <h3><?php echo $page->post_title; ?></h3>
               <div><?php echo $page->post_excerpt; ?></div>
@@ -187,10 +187,10 @@ get_header(); ?>
           <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="front-card">
               <div class="d-none d-sm-block front-card-img" 
-                   style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
+                   style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'medium_large' ); ?>');">
               </div>
               <div class="front-card-text shop-card-text"
-                   style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
+                   style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'medium_large' ); ?>');">
                 <div>
                   <h4>
                     <a href="<?php the_permalink($page->ID); ?>">

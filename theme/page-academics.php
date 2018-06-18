@@ -41,10 +41,10 @@
         <a href="<?php echo get_page_link( $page->ID ); ?>"
            class="front-card">
           <div class="d-none d-sm-block front-card-img" 
-               style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
+               style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'medium_large' ); ?>');">
           </div>
           <div class="front-card-text"
-               style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'full' ); ?>');">
+               style="background-image: url('<?php echo get_the_post_thumbnail_url( $page->ID, 'medium_large' ); ?>');">
             <div><h3><?php echo $page->post_title; ?></h3></div>
           </div>
           <div class="btn btn-primary btn-sm front-card-btn">
