@@ -16,7 +16,7 @@ get_header(); ?>
        class="splash-page" 
        data-type="splash-image"
        style="background-image: url('<?php
-        echo get_theme_file_uri( '/assets/images/wths.jpg' )
+        echo get_theme_file_uri( '/assets/images/wths-opt.jpg' )
        ?>">
     
     <div class="tagline">
