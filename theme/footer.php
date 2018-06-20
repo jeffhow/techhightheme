@@ -8,10 +8,12 @@
     <div class="row"><div class="col">
       <small>
         This site is designed and maintained by students in <a href="/webdev/">Programming and Web Development</a>.
-        <br>
-        <a href="/about-this-theme/">The story behind this design.</a>
+        |
+        Read <a href="/about-this-theme/">The story behind this design.</a>
         <br>
         <a href="/contact/">Contact us with your Comments, Questions, and Suggestions.</a>
+        |
+        <a href="/privacy-policy/">This Website's Privacy Policy</a>
       </small>
     </div></div>
 </footer>
