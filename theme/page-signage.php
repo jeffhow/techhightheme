@@ -30,7 +30,7 @@
      * New js page reload function without Jquery
      */
     function reload_timer(){
-      setInterval(function(){ window.location.reload(true); }, 1000);
+      setInterval( function(){ window.location.reload(true); }, (10 * 60 * 1000) ); // Ten minutes
     }
     
     </script>
